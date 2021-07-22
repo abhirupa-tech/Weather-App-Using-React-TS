@@ -4,26 +4,27 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [currentLocation, setLocationSearch] = useState("Kolkata");
-  const [locations, setLocation] = useState([
-    "Berlin",
-    "London",
-    "New York",
-    "Tokyo",
-  ]);
+  const [currentLocation, setLocationSearch] = useState("");
+  const [locations, setLocation] = useState<string[]>([]);
+
+  const disableSearch = currentLocation.trim() === "";
+  const addLocation = () => {
+    setLocation([currentLocation, ...locations]);
+    setLocationSearch("");
+  };
   return (
     <div className="App">
       <h1>Weather App</h1>
-
       <label>
-        Pick location:
+        Add location:
         <input
           type="text"
-          value={currentLocation}
           onChange={(e) => setLocationSearch(e.target.value)}
         ></input>
       </label>
-      <button>Search</button>
+      <button onClick={addLocation} disabled={disableSearch}>
+        Search
+      </button>
 
       <table>
         <thead>
