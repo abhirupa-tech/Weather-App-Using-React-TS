@@ -1,10 +1,10 @@
 import React from "react";
 // import logo from './logo.svg';
 import { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 function App() {
-  const [currentLocation, setLocationSearch] = useState("");
   const [locations, setLocation] = useState<string[]>([]);
 
   const disableSearch = currentLocation.trim() === "";
@@ -15,18 +15,7 @@ function App() {
   return (
     <div className="App">
       <h1>Weather App</h1>
-      <label>
-        Add location:
-        <input
-          type="text"
-          onChange={(e) => setLocationSearch(e.target.value)}
-        ></input>
-      </label>
-      <button onClick={addLocation} disabled={disableSearch}>
-        Search
-      </button>
-
-      <table>
+      <table className="table table-hover">
         <thead>
           <tr>
             <th>Locations</th>
