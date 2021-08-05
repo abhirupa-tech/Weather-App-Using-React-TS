@@ -1,6 +1,8 @@
 // const process = require("process");
 import * as dotenv from "dotenv";
 
+import { WeatherLocation } from "../model/Weather";
+
 const key: string = process.env.WEATHER_API_KEY as string;
 if (key == undefined) {
   throw new Error("Weather API key is not set.");
